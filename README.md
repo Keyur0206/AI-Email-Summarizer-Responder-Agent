@@ -6,7 +6,7 @@ It connects to Gmail using Google OAuth2 (via Passport.js), fetches daily emails
 
 ---
 
-### 📁 Folder Structure
+## 📁 Folder Structure
 
 ```
 AI Email Summarizer & Responder Agent/
@@ -45,8 +45,8 @@ This project is built with the following technologies:
 
 **1. Clone the repo**
 ```bash
-git clone https://github.com/your-username/ai-email-agent.git
-cd ai-email-agent
+git clone https://github.com/Keyur0206/AI-Email-Summarizer-Responder-Agent.git
+cd AI-Email-Summarizer-Responder-Agent
 ```
 
 **2. Install dependencies**
