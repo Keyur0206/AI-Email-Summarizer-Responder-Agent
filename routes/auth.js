@@ -37,7 +37,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/" }),
   async (req, res) => {
     if (!req.user) return res.redirect("/");
-    res.redirect("/")
+    res.redirect("/");
   }
 );
 
@@ -46,7 +46,6 @@ router.get("/", (req, res) => {
 
   res.render("index", { user: req.user });
 });
-
 
 // Logout route
 router.get("/logout", (req, res, next) => {
