@@ -1,6 +1,6 @@
 import { google } from "googleapis";
 
-// 🔹 Gmail Client
+//  Gmail Client
 export function getGmailClient(user) {
   const auth = new google.auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID,
@@ -14,13 +14,13 @@ export function getGmailClient(user) {
   return google.gmail({ version: "v1", auth });
 }
 
-// 🔹 Extract plain email (Name <email>)
+//  Extract  email 
 export function extractEmail(address = "") {
   const match = address.match(/<(.+)>/);
   return (match ? match[1] : address).trim().toLowerCase();
 }
 
-// 🔹 Fetch emails (last 24h, excluding promos & no-replies)
+//  Fetch emails (last 24h, excluding promos & no-replies)
 export async function fetchEmails(gmail) {
   try {
     const res = await gmail.users.messages.list({
@@ -70,7 +70,7 @@ export async function fetchEmails(gmail) {
   }
 }
 
-// 🔹 Check if draft already exists
+//  Check if draft already exists
 async function draftExists(gmail, to, subject) {
   try {
     const res = await gmail.users.drafts.list({ userId: "me" });
@@ -102,7 +102,7 @@ async function draftExists(gmail, to, subject) {
   }
 }
 
-// 🔹 Create draft if not exists
+//  Create draft if not exists
 export async function createDraft(gmail, to, subject, body, threadId) {
   if (await draftExists(gmail, to, subject)) {
     console.log(`Draft already exists for ${to}`);

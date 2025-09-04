@@ -12,7 +12,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Setup EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 

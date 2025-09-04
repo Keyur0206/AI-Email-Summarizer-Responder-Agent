@@ -94,8 +94,11 @@ router.get("/", (req, res) => {
 router.get("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
-    req.session.destroy(() => {
-      res.clearCookie("connect.sid");
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Session destruction error:", err);
+        return next(err);
+      }
       res.redirect("/");
     });
   });
