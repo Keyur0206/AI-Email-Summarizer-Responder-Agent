@@ -20,7 +20,7 @@ export function extractEmail(address = "") {
   return (match ? match[1] : address).trim().toLowerCase();
 }
 
-//  Fetch emails (last 24h, excluding promos & no-replies)
+//  Fetch emails (last 24h)
 export async function fetchEmails(gmail) {
   try {
     const res = await gmail.users.messages.list({
