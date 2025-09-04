@@ -2,14 +2,6 @@ import express from "express";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { config } from "../config.js";
-import {
-  getGmailClient,
-  fetchEmails,
-  createDraft,
-  extractEmail,
-} from "../gmail.js";
-import { summarizeEmails, generateReplyDrafts } from "../openai.js";
-
 const router = express.Router();
 
 // Google OAuth Strategy
@@ -45,41 +37,7 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/" }),
   async (req, res) => {
     if (!req.user) return res.redirect("/");
-    // res.render("index", { user: req.user });
     res.redirect("/")
-
-    // try {
-    //   // Fetch emails
-    //   const emails = await fetchEmails(gmail);
-
-    //   // Generate summary
-    //   let summaryText = emails.length
-    //     ? await summarizeEmails(emails)
-    //     : "No emails today";
-
-    //   if (Array.isArray(summaryText)) summaryText = summaryText.join("\n");
-    //   else if (typeof summaryText !== "string") summaryText = String(summaryText);
-
-    //   const summary = summaryText.split("\n").filter((line) => line.trim());
-
-    //   // Generate drafts
-    //   if (emails.length) {
-    //     const drafts = await generateReplyDrafts(emails);
-
-    //     for (const { to, subject, body, threadId } of drafts) {
-    //       // Create draft only if it doesn't exist (handled in createDraft)
-    //       await createDraft(gmail, to, subject, body, threadId);
-
-    //       // Optional delay to avoid Gmail API limits
-    //       await new Promise((r) => setTimeout(r, 500));
-    //     }
-    //   }
-
-    //   res.render("summary", { summary });
-    // } catch (err) {
-    //   console.error(err);
-    //   res.status(500).send("Error processing emails");
-    // }
   }
 );
 

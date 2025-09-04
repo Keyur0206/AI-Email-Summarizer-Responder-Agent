@@ -19,7 +19,7 @@ async function askOpenAI(prompt, max_tokens = 300) {
     console.error("OpenAI API Error:", err.message || err);
     return "";
   }
-}
+} 
 
 //  Summarize emails
 export async function summarizeEmails(emails) {

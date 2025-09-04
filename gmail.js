@@ -94,7 +94,7 @@ async function draftExists(gmail, to, subject) {
       ) {
         return true;
       }
-    }
+    } 
     return false;
   } catch (err) {
     console.error("Error checking drafts:", err.message.slice(0, 80));
